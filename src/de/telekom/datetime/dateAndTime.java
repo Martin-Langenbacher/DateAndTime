@@ -415,9 +415,7 @@ The map is unmodifiable.
 				
 				final LocalDate fromIsoDate = LocalDate.parse("1971-02-07");
 				final LocalDate fromCustomPattern = LocalDate.parse("18.03.2014", ddMMyyyyFormat);
-				// does not work...
-				//final LocalDateTime fromShortGerman = LocalDateTime.parse("18.03.14 11:12", shortGerman);
-				String fromShortGerman = "=============== >>> Sorry: Does not work yet: See code line 419 !!!";
+				final LocalDateTime fromShortGerman = LocalDateTime.parse("18.03.14, 11:12", shortGerman);
 				
 				System.out.println("From ISO Date:        " + fromIsoDate);
 				System.out.println("From custom pattern:  " + fromCustomPattern);
