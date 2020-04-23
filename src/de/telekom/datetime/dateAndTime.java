@@ -16,7 +16,13 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+
+
+import java.time.format.FormatStyle;
+
+
 import java.time.temporal.ChronoUnit;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -392,21 +398,26 @@ The map is unmodifiable.
 				final Map<String, DateTimeFormatter> formatters = new LinkedHashMap<>();
 				formatters.put("BASIC_ISO_DATE",  BASIC_ISO_DATE);
 				formatters.put("ISO_DATE_TIME", ISO_DATE_TIME);
-				formatters.put("dd.MM.yyyy",  ddMMYYYYFormat);
+				formatters.put("dd.MM.yyyy",  ddMMyyyyFormat);
 				
 				formatters.put("d.MMMM y (it)", italian_dMMMMyy);
 				formatters.put("SHORT_GERMAN",  shortGerman);
 				formatters.put("CUSTOM_FORMAT",  customFormat);
 				
 				System.out.println("Formatting:\n");
-				applyFormatters(LocalDateTime.of(2014,  MAY,  28,  1,  2, 3), formatters);
+				applyFormatters(LocalDateTime.of(2014, Month.MARCH, 28, 1, 2, 3), formatters);
+				// applyFormatters(LocalDateTime.of(2014,  Month.AUGUST,  28,  1,  2, 3), formatters);
+				// applyFormatters(LocalDateTime.of(2014, Month.MAY, 28, 1, 2, 3, 4), formatters);
+				// applyFormatters(LocalDateTime.of(2014, 5, 28, 1, 2, 3), formatters);
 				
 				
 				System.out.println("\nParsing:\n");
 				
 				final LocalDate fromIsoDate = LocalDate.parse("1971-02-07");
 				final LocalDate fromCustomPattern = LocalDate.parse("18.03.2014", ddMMyyyyFormat);
-				final LocalDateTime fromShortGerman = LocalDateTime.parse("18.03.14 11:12", shortGerman);
+				// does not work...
+				//final LocalDateTime fromShortGerman = LocalDateTime.parse("18.03.14 11:12", shortGerman);
+				String fromShortGerman = "=============== >>> Sorry: Does not work yet: See code line 419 !!!";
 				
 				System.out.println("From ISO Date:        " + fromIsoDate);
 				System.out.println("From custom pattern:  " + fromCustomPattern);
@@ -419,6 +430,31 @@ The map is unmodifiable.
 	}
 	
 	
+
+	
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Remark:  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
+	
+	/*
+	//Convert LocalDateTime to Time Zone ISO8601 String
+
+	LocalDateTime ldt = LocalDateTime.now(); 
+	ZonedDateTime zdt = ldt.atZone(ZoneOffset.UTC); //you might use a different zone
+	String iso8601 = zdt.toString();
+
+	//Convert from ISO8601 String back to a LocalDateTime
+
+	String iso8601 = "2016-02-14T18:32:04.150Z";
+	ZonedDateTime zdt = ZonedDateTime.parse(iso8601);
+	LocalDateTime ldt = zdt.toLocalDateTime();
+	
+	*/
+	
+	// https://github.com/sharmasha2nk/Java8/blob/master/src/com/java8/feature/date/DateTime.java
+	
+	
+	
+	//************************************************************************************************************************	
+	// methods...
 	private static void applyFormatters(final LocalDateTime base, final Map<String, DateTimeFormatter> formatters) {
 		System.out.println("Starting on: " + base);
 		formatters.forEach((name, formatter) -> {
