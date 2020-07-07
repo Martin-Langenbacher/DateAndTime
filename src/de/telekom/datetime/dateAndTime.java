@@ -420,11 +420,12 @@ The map is unmodifiable.
 		final LocalDate fromIsoDate = LocalDate.parse("1971-02-07");
 		String testString = "31.03.2020";
 		final LocalDate fromCustomPattern = LocalDate.parse(testString, ddMMyyyyFormat);
-		final LocalDateTime fromShortGerman = LocalDateTime.parse("18.03.14 11:12", shortGerman);
+		String testString2 = "18.03.14, 11:12";
+		final LocalDateTime fromShortGerman = LocalDateTime.parse(testString2, shortGerman);
 		
 		System.out.println("From ISO Date:        " + fromIsoDate);
 		System.out.println("From custom pattern:  " + fromCustomPattern + "; AND with the imput String of: " +testString);
-		System.out.println("From short german:    " + fromShortGerman);
+		System.out.println("From short german:    " + fromShortGerman + "; ( --> Imput-String: " +testString2 +").");
 		
 		
 		
