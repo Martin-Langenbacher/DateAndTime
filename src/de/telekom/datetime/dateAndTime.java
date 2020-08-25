@@ -503,12 +503,27 @@ The map is unmodifiable.
 	System.out.println("Today is dd-MM-yyyy format: " + dateTest + "   -->(specific defined format)");
 			
 			
-			
-			
+	
+	System.out.println("\n\n*========================> E N D <=============================*");	
+	System.out.println("*========================> E N D <=============================*");	
+	System.out.println("*========================> E N D <=============================*");	
 	
 	
 	
-	System.out.println("*========================> E N D <=============================*");					
+	System.out.println("\n");
+	System.out.println("\n");	
+	System.out.println("\n*========================> Test from here on !  ==========>>>>");	
+	System.out.println("\n");
+	LocalDateTime testNowTime = LocalDateTime.now();
+	System.out.println("Now: " +testNowTime);
+	System.out.println("Minus one day: " +testNowTime.minusDays(1));
+	System.out.println("Minus one day and one hour: " +testNowTime.minusDays(1).minusHours(1));
+	
+	System.out.println("\nToday, but minus 1 day at 00:00");
+	LocalDateTime rightTimeToPrint = LocalDateTime.now().minusDays(1).withHour(0).withMinute(0).withSecond(0).withNano(0);
+	System.out.println(rightTimeToPrint);
+	
+	
 	
 	}
 	
@@ -560,6 +575,13 @@ The map is unmodifiable.
 	private static void printClockAndMillis(final Clock clock) {
 		System.out.println(clock + " / ms: " + clock.millis());
 	}
-	
 
 }
+
+
+
+
+
+
+
+
