@@ -483,7 +483,7 @@ The map is unmodifiable.
      // Class: --13-- Formatting and Parsing
     System.out.println();
     System.out.println("************************************************************************************");
-	System.out.println("13) Weitere Beispiele:  G U T !!");
+	System.out.println("13) Weitere Beispiele:  G U T !   ==> HEUTE...");
 
 		
 	LocalDate nowML = LocalDate.now();
