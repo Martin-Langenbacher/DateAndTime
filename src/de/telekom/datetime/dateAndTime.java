@@ -420,7 +420,8 @@ The map is unmodifiable.
 		final LocalDate fromIsoDate = LocalDate.parse("1971-02-07");
 		String testString = "31.03.2020";
 		final LocalDate fromCustomPattern = LocalDate.parse(testString, ddMMyyyyFormat);
-		String testString2 = "18.03.14, 11:12";
+		String testString2 = "18.03.14 11:12";
+		//String testString2 = "18.03.14, 11:12"; // --> ohne Komma funktioniert es hier nicht ... (hat es einmal funktioniert?)
 		final LocalDateTime fromShortGerman = LocalDateTime.parse(testString2, shortGerman);
 		
 		System.out.println("From ISO Date:        " + fromIsoDate);
