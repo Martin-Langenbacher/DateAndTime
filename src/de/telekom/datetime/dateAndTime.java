@@ -22,6 +22,7 @@ import java.time.format.FormatStyle;
 
 
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -524,7 +525,60 @@ The map is unmodifiable.
 	LocalDateTime rightTimeToPrint = LocalDateTime.now().minusDays(1).withHour(0).withMinute(0).withSecond(0).withNano(0);
 	System.out.println(rightTimeToPrint);
 	
+	// Martin new: out of the Java book from O'Reilly
+	System.out.println("\n");
+	System.out.println("\n ML: ========================> Martin-new...  !  ==========>>>>");	
+	System.out.println();
 	
+	Calendar c = Calendar.getInstance();
+	c.set(2020,  9, 3, 14, 49);
+	
+	System.out.println("Datum erstellt / eingegeben:    " + c.getTime());
+	long tag1 = c.getTimeInMillis();
+	tag1 += 1000 * 60 * 60;
+	c.setTimeInMillis(tag1);
+	System.out.print("neue Stunde: " + c.get(c.HOUR_OF_DAY));
+	System.out.println(" / neue Stunde (static way): " + c.get(Calendar.HOUR_OF_DAY)); // static way...
+	
+	c.add(c.DATE,  35); // add 35 days
+	System.out.println("35 Tage hinzurechnen:           " + c.getTime());
+	
+	c.roll(c.DATE, 35);
+	System.out.println("35 Tage rollieren:              " + c.getTime() + "  (Datum wird 35 Tage vorgedreht, aber der Monat bleibt unverändert!)");
+	
+	c.set(c.DATE, 1);
+	System.out.println("auf 1 setzen:                   " + c.getTime());
+	
+	System.out.println("get(c.DATE): " + c.get(c.DATE));
+	System.out.println("get(Calendar.MONTH): " + c.get(Calendar.MONTH));
+	System.out.println("get(c.YEAR): " + c.get(c.YEAR));
+	System.out.println("get(c.HOUR ----> ):  " + c.get(c.HOUR));
+	System.out.println("get(c.HOUR_OF_DAY): " + c.get(c.HOUR_OF_DAY));
+	System.out.println("get(c.MILLISECOND): " + c.get(c.MILLISECOND));
+	System.out.println("get(c.MINUTE): " + c.get(c.MINUTE));
+	System.out.println("get(c.ZONE_OFFSET): " + c.get(c.ZONE_OFFSET) + "; ohne Sommerzeitberücksichtigung, gegenüber GMT in Millisekunden...");
+	System.out.println("get(c.DAY_OF_WEEK): " + c.get(c.DAY_OF_WEEK));
+	System.out.println("get(c.DAY_OF_YEAR): " + c.get(c.DAY_OF_YEAR));
+	System.out.println("get(c.WEEK_OF_YEAR): " + c.get(c.WEEK_OF_YEAR));
+	System.out.println("get(c.WEEK_OF_MONTH): " + c.get(c.WEEK_OF_MONTH));
+	System.out.println("get(c.DAY_OF_WEEK_IN_MONTH): " + c.get(c.DAY_OF_WEEK_IN_MONTH));
+	System.out.println("get(c.DAY_OF_WEEK): " + c.get(c.DAY_OF_WEEK));
+	System.out.println("get(c.WEDNESDAY): " + c.get(c.WEDNESDAY));
+	System.out.println("get(c.WEEK_OF_YEAR): " + c.get(c.WEEK_OF_YEAR));
+	
+	System.out.println();
+	System.out.println(String.format("%tc",  new Date()) + " (now)");
+	System.out.println(String.format("%tc",  c) + "  (date / time from above ...)");
+	System.out.println(String.format("%tr",  c) + "                  (only the time)");
+	
+	System.out.println(String.format("%tA, %td. %tB", c, c, c));
+	System.out.println(String.format("%tA, %<td. %<tB", c));
+	
+	System.out.println("\nSome numbers (with formatting): ");
+	int eins = 20455662;
+	double zwei = 100567321.266707;
+	String s = String.format("Die zwei Zahlen sind %,d (int) und %,.1f (double).",  eins, zwei);
+	System.out.println(s);
 	
 	}
 	
