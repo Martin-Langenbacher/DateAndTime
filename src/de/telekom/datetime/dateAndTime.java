@@ -549,7 +549,9 @@ The map is unmodifiable.
 	c.set(c.DATE, 1);
 	System.out.println("auf 1 setzen:                   " + c.getTime());
 	
-	System.out.println("get(c.DATE): " + c.get(c.DATE));
+	
+	// Calendar statt c? --> c.get ist das Objekt UND Calenar.DATE ist die Konstante !!!
+	System.out.println("get(c.DATE): " + c.get(Calendar.DATE));
 	System.out.println("get(Calendar.MONTH): " + c.get(Calendar.MONTH));
 	System.out.println("get(c.YEAR): " + c.get(c.YEAR));
 	System.out.println("get(c.HOUR ----> ):  " + c.get(c.HOUR));
