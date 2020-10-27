@@ -636,9 +636,52 @@ The map is unmodifiable.
 }
 
 
+/*	// Methode: Zeit-Check ---> Bei App nicht mehr benötigt!
 
+    private boolean rideIsInThePast(int hourTimePicker, int minutesTimePicker, int[] dateFromDatePicker) {
 
+        // the now
+        Calendar rightNow = Calendar.getInstance();
+        int yearOfNow = rightNow.get(Calendar.YEAR);
+        int monthOfNow = rightNow.get(Calendar.MONTH);
 
+        // Java problem: The month starts with 0 and not with 1 for January...!
+        monthOfNow = ( monthOfNow +1 ) % 12;
+
+        int dayOfNow = rightNow.get(Calendar.DAY_OF_MONTH);
+        int hourOfNow = rightNow.get(Calendar.HOUR_OF_DAY);
+        int minutesOfNow = rightNow.get(Calendar.MINUTE);
+
+        int year = dateFromDatePicker[0];
+        int month = dateFromDatePicker[1];
+        int day = dateFromDatePicker[2];
+
+        if(year == yearOfNow && month == monthOfNow && day == dayOfNow) {
+
+            // is the time(now) later than the time input?
+            if (hourOfNow < hourTimePicker) {
+                return false;
+            } else {
+                if (hourOfNow == hourTimePicker && minutesOfNow < minutesTimePicker) {
+                    return false;
+                } else {
+                    viewModel.getMayoContext().sendInfoMessage(getString(R.string.cra_msg_ride_must_not_be_in_the_past));
+                    
+                    // We have two messages - therefore the handler and the delay...
+                    final Handler handler = new Handler(Looper.getMainLooper());
+                    handler.postDelayed(() -> {
+                        //Do something after 100ms
+                        viewModel.getMayoContext().sendInfoMessage(getString(R.string.cra_msg_ride_we_changed_the_time_to_now));
+                    }, 3000);
+
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+*/
 
 
 
